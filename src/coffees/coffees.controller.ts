@@ -14,11 +14,13 @@ export class CoffeesController {
     }
 
     @Get(':id')
-    findOne(@Param('id') id: string) {
-        return this.coffeesService.findOne(+id);
+    findOne(@Param('id') id: number) {
+        console.log(typeof id); // false
+        return this.coffeesService.findOne(id);
     }
     @Post()
     create(@Body() createCoffeeDto: CreateCoffeeDto) {
+        console.log(createCoffeeDto instanceof CreateCoffeeDto); // true
         const coffee = { id: Date.now(), ...createCoffeeDto };
         return this.coffeesService.create(coffee);
     }
