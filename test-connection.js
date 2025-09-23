@@ -1,4 +1,3 @@
-
 const { Client } = require('pg');
 
 const client = new Client({
@@ -6,7 +5,7 @@ const client = new Client({
   port: 5433,
   user: 'postgres',
   password: 'pass123',
-  database: 'buccode-db'
+  database: 'buccode-db',
 });
 
 async function test() {

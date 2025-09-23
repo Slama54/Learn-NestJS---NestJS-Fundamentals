@@ -8,7 +8,7 @@ services:
       POSTGRES_PASSWORD: pass123
       POSTGRES_DB: buccode-db
     ports:
-      - "5433:5432"  # Changez le port pour éviter les conflits
+      - '5433:5432' # Changez le port pour éviter les conflits
     volumes:
       - postgres_data:/var/lib/postgresql/data
     restart: unless-stopped
