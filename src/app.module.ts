@@ -15,7 +15,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       password: 'pass123',
       database: 'buccode-db',
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
-      synchronize: true, // Only for development!
+      synchronize: false, // Only for development!
     }),
   ],
   controllers: [AppController],
