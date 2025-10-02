@@ -7,11 +7,20 @@ import { Flavor } from './entities/flavor.entity/flavor.entity';
 import { Event } from 'src/events/entities/event.entity';
 import { COFFEE_BRANDS } from './coffees.constants';
 
+class ConfiService {}
+class DevelopmentConfigService {}
+class ProductionConfigService {}
 @Module({
   imports: [TypeOrmModule.forFeature([Coffee, Flavor, Event])],
   controllers: [CoffeesController],
   providers: [
-    CoffeesService,
+    {
+      provide: CoffeesService,
+      useClass:
+        process.env.NODE_ENV === 'development'
+          ? DevelopmentConfigService
+          : ProductionConfigService,
+    },
     { provide: COFFEE_BRANDS, useValue: ['buddy brew', 'nescafe'] },
   ],
   exports: [CoffeesService],
